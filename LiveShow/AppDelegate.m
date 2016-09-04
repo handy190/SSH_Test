@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "LiveShowLobbyTableViewController.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +17,15 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    UINavigationController *nav = [[UINavigationController alloc] init];
+    [nav pushViewController:[[LiveShowLobbyTableViewController alloc] init] animated:NO];
+    self.window = ({
+        UIWindow *window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+        window.rootViewController = nav;
+        window.backgroundColor = [UIColor whiteColor];
+        window;
+    });
+    [self.window makeKeyAndVisible];
     return YES;
 }
 
